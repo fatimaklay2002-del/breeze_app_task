@@ -3,12 +3,12 @@ import 'product.dart';
 import 'product_meta.dart';
 import 'review.dart';
 
-/// Tolerant parsing: missing / null fields never throw (brand stays null).
+
 Product productFromJson(Map<String, dynamic> j) {
   final thumb = j['thumbnail'] as String? ?? '';
   final imgs = List<String>.from(j['images'] ?? const []);
   String str(String k, [String d = '-']) => j[k] as String? ?? d;
-  double dbl(String k) => (j[k] as num?)?.toDouble() ?? 0; // num -> double
+  double dbl(String k) => (j[k] as num?)?.toDouble() ?? 0; 
   return Product(
     id: j['id'] as int,
     title: str('title', ''),

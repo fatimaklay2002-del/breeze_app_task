@@ -1,6 +1,5 @@
 import 'review.dart';
 
-/// One row of the star distribution (5★ ... 1★).
 class RatingBar {
   final int stars;
   final int count;
@@ -11,7 +10,6 @@ class RatingBar {
   String get label => '$count (${percent.round()}%)';
 }
 
-/// Average + distribution, computed from the reviews array only.
 class RatingSummary {
   final double average;
   final int total;

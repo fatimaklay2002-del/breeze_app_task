@@ -55,7 +55,6 @@ class ProductsCubit extends Cubit<ProductsState>
     return fetchPage(page: 1);
   }
 
-  /// Re-tapping the current page is a no-op unless Load More merged pages.
   Future<void> goToPage(int page) {
     final same =
         page == state.currentPage && state.loaded <= ProductsState.pageSize;

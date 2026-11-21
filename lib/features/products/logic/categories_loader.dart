@@ -3,7 +3,6 @@ import '../../../core/network/failures.dart';
 import '../data/repository/product_repository.dart';
 import 'products_state.dart';
 
-/// Loads the departments list (also used by the "tap to retry" button).
 mixin CategoriesLoader on Cubit<ProductsState> {
   ProductRepository get repo;
 

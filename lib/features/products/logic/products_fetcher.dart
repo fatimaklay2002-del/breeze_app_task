@@ -5,12 +5,10 @@ import '../data/models/products_response.dart';
 import '../data/repository/product_repository.dart';
 import 'products_state.dart';
 
-/// Page loading (replace / append) with cancellation of stale requests.
 mixin ProductsFetcher on Cubit<ProductsState> {
   ProductRepository get repo;
   CancelToken? _token;
 
-  /// One request for the current query / category / sort.
   Future<ProductsResponse> _request(int skip) {
     _token?.cancel(); // a newer request makes the old one obsolete
     return repo.getProducts(
@@ -23,12 +21,11 @@ mixin ProductsFetcher on Cubit<ProductsState> {
     );
   }
 
-  /// Numeric pagination / first load: replaces the list.
   Future<void> fetchPage({required int page}) async {
     final skip = (page - 1) * ProductsState.pageSize;
     emit(state.copyWith(
       status: ProductsStatus.loading,
-      currentPage: page, // so Retry re-requests the same page
+      currentPage: page, 
       offset: skip,
       loadMoreFailed: false,
     ));
@@ -48,7 +45,6 @@ mixin ProductsFetcher on Cubit<ProductsState> {
     }
   }
 
-  /// Load More: appends to the current list.
   Future<void> loadMore() async {
     final busy = state.status == ProductsStatus.loadingMore ||
         state.status == ProductsStatus.loading;

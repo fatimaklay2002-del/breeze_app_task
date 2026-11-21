@@ -26,7 +26,6 @@ class Review extends Equatable {
 
   String get dateLabel => formatDate(date);
 
-  /// "Savannah Gomez" -> "SG" | "Madonna" -> "M" | "" -> "?"
   String get initials {
     final parts = reviewerName
         .trim()

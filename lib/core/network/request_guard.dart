@@ -4,7 +4,6 @@ import 'failures.dart';
 const _parsingMessage =
     'We received unexpected data from the server. Please try again.';
 
-/// The only place that knows about Dio errors: everything becomes a Failure.
 Future<T> guardRequest<T>(Future<T> Function() call) async {
   try {
     return await call();
